@@ -23,6 +23,7 @@ const (
 	cosmosHeaderOfferMinimumThroughput             string = "x-ms-cosmos-min-throughput"
 	cosmosHeaderResponseContinuationTokenLimitInKb string = "x-ms-documentdb-responsecontinuationtokenlimitinkb"
 	cosmosHeaderEnableScanInQuery                  string = "x-ms-documentdb-force-query-scan"
+	cosmosHeaderEnableCrossPartitionQuery          string = "x-ms-documentdb-query-enablecrosspartition"
 	cosmosHeaderMaxItemCount                       string = "x-ms-max-item-count"
 	cosmosHeaderContinuationToken                  string = "x-ms-continuation"
 	cosmosHeaderPopulateIndexMetrics               string = "x-ms-cosmos-populateindexmetrics"

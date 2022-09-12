@@ -36,6 +36,9 @@ func (p *headerPolicies) Do(req *policy.Request) (*http.Response, error) {
 					return nil, err
 				}
 				req.Raw().Header.Add(cosmosHeaderPartitionKey, string(pkAsString))
+			} else {
+				// No partition key given, enable x-partition querying
+				req.Raw().Header.Add(cosmosHeaderEnableCrossPartitionQuery, "true")
 			}
 
 			if o.headerOptionsOverride.correlatedActivityId != nil {

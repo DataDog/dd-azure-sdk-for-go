@@ -410,8 +410,13 @@ func (c *ContainerClient) DeleteItem(
 func (c *ContainerClient) NewQueryItemsPager(query string, partitionKey PartitionKey, o *QueryOptions) *runtime.Pager[QueryItemsResponse] {
 	correlatedActivityId, _ := uuid.New()
 	h := headerOptionsOverride{
-		partitionKey:         &partitionKey,
 		correlatedActivityId: &correlatedActivityId,
+	}
+
+	if len(partitionKey.values) > 0 {
+		// XXX: For x-partition querying, we want the partition to key to be nil.
+		// Hack this for now.
+		h.partitionKey = &partitionKey
 	}
 
 	queryOptions := &QueryOptions{}
